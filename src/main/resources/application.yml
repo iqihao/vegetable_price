@@ -1,0 +1,18 @@
+spring:
+  datasource:
+      name: vegetable
+      url: jdbc:postgresql://localhost:5432/vegetable
+      username: postgres
+      password: postgres
+
+  liquibase:
+    change-log: classpath:db/changelog/master.xml
+    user: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/vegetable
+    enabled: true
+    drop-first: false
+
+
+infoSource:
+  main: http://119.163.120.130:88/allow/allow_1/Default.aspx
