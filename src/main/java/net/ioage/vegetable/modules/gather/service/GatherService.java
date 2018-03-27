@@ -8,4 +8,5 @@ import org.springframework.stereotype.Service;
 
 public interface GatherService {
     void getInfo();
+    void test();
 }
