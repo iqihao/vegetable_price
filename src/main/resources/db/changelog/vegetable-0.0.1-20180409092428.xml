@@ -1,0 +1,100 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="ioage" id="1523265872744-1">
+        <createTable remarks="区域表" tableName="area">
+            <column name="id" remarks="编号" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" remarks="名称" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="ioage" id="1523265872744-2">
+        <createTable remarks="商品表" tableName="goods">
+            <column name="id" remarks="编号" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" remarks="名称" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="assortment" remarks="品种" type="VARCHAR(10)"/>
+            <column name="specification" remarks="规格" type="VARCHAR(10)"/>
+            <column name="unit" remarks="单位" type="VARCHAR(10)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ioage" id="1523265872744-3">
+        <createTable remarks="市场表" tableName="market">
+            <column name="id" remarks="编号" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" remarks="名称" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="area_id" remarks="区域" type="INT"/>
+            <column name="market_type" remarks="类别" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="ioage" id="1523265872744-4">
+        <createTable remarks="价格表" tableName="price">
+            <column name="id" remarks="编号" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="goods_id" remarks="商品ID" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="market_id" remarks="市场ID" type="INT"/>
+            <column name="area_id" remarks="区域ID" type="INT"/>
+            <column name="date_time" remarks="日期" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="create_time" remarks="创建时间" type="TIMESTAMP(6) WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="numeric(10, 2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="ioage" id="1523265872744-5">
+        <addPrimaryKey columnNames="id" constraintName="pk_area_id" tableName="area"/>
+    </changeSet>
+    <changeSet author="ioage" id="1523265872744-6">
+        <addPrimaryKey columnNames="id" constraintName="pk_goods_id" tableName="goods"/>
+    </changeSet>
+    <changeSet author="ioage" id="1523265872744-7">
+        <addPrimaryKey columnNames="id" constraintName="pk_market_id" tableName="market"/>
+    </changeSet>
+    <changeSet author="ioage" id="1523265872744-8">
+        <addPrimaryKey columnNames="id" constraintName="pk_price_id" tableName="price"/>
+    </changeSet>
+    <changeSet author="ioage" id="1523265872744-9">
+        <createIndex indexName="idx_goods_name" tableName="goods">
+            <column name="name"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="ioage" id="1523265872744-10">
+        <createIndex indexName="price_goods_idx" tableName="price">
+            <column name="goods_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="ioage" id="1523265872744-11">
+        <createIndex indexName="price_market_idx" tableName="price">
+            <column name="market_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="ioage" id="1523265872744-12">
+        <addForeignKeyConstraint baseColumnNames="area_id" baseTableName="market" constraintName="fk_market_area_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="area"/>
+    </changeSet>
+    <changeSet author="ioage" id="1523265872744-13">
+        <addForeignKeyConstraint baseColumnNames="area_id" baseTableName="price" constraintName="fk_price_area_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="area"/>
+    </changeSet>
+    <changeSet author="ioage" id="1523265872744-14">
+        <addForeignKeyConstraint baseColumnNames="goods_id" baseTableName="price" constraintName="fk_price_goods_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="goods"/>
+    </changeSet>
+    <changeSet author="ioage" id="1523265872744-15">
+        <addForeignKeyConstraint baseColumnNames="market_id" baseTableName="price" constraintName="fk_price_market_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="market"/>
+    </changeSet>
+</databaseChangeLog>
