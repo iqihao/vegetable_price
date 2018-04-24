@@ -17,7 +17,7 @@ public class VegetableApplicationTests {
 
 	@Test
 	public void contextLoads() {
-		gatherService.test();
+//		gatherService.test();
 	}
 
 }

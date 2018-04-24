@@ -16,3 +16,8 @@ spring:
 
 infoSource:
   main: http://119.163.120.130:88/allow/allow_1/Default.aspx
+
+mapper:
+  mappers: net.ioage.vegetable.core.orm.GenericMapper
+  not-empty: false
+  identity: Postgresql
