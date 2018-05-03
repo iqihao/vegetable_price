@@ -102,30 +102,30 @@
                     <diffTypes>tables,views,columns,indexs,foreignkeys,primarykeys,uniqueconstraints</diffTypes>
                 </configuration>
             </plugin>
-            <!--<plugin>-->
-                <!--<groupId>org.mybatis.generator</groupId>-->
-                <!--<artifactId>mybatis-generator-maven-plugin</artifactId>-->
-                <!--<version>1.3.6</version>-->
-                <!--<configuration>-->
-                    <!--<configurationFile>-->
-                        <!--${basedir}/src/main/resources/db/generatorConfig.xml-->
-                    <!--</configurationFile>-->
-                    <!--<overwrite>true</overwrite>-->
-                    <!--<verbose>true</verbose>-->
-                <!--</configuration>-->
-                <!--<dependencies>-->
-                    <!--&lt;!&ndash;<dependency>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<groupId>org.postgresql</groupId>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<artifactId>postgresql</artifactId>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<scope>runtime</scope>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</dependency>&ndash;&gt;-->
-                    <!--<dependency>-->
-                        <!--<groupId>tk.mybatis</groupId>-->
-                        <!--<artifactId>mapper</artifactId>-->
-                        <!--<version>4.0.0</version>-->
-                    <!--</dependency>-->
-                <!--</dependencies>-->
-            <!--</plugin>-->
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.6</version>
+                <configuration>
+                    <configurationFile>
+                        ${basedir}/src/main/resources/db/generatorConfig.xml
+                    </configurationFile>
+                    <overwrite>true</overwrite>
+                    <verbose>true</verbose>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.postgresql</groupId>
+                        <artifactId>postgresql</artifactId>
+                        <version>42.2.2</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>tk.mybatis</groupId>
+                        <artifactId>mapper</artifactId>
+                        <version>4.0.0</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
 		</plugins>
 	</build>
 
