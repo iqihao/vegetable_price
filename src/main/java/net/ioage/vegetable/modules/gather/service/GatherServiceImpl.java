@@ -39,7 +39,7 @@ public class GatherServiceImpl implements GatherService {
     public void test() {
         try {
             Document doc = Jsoup.connect(url).get();
-            Element content = doc.getElementById("content");
+            Element content = doc.getElementById("ctl00_DropDownList1");
             logger.info(content.toString());
         }catch (IOException e){
             System.out.print("123");

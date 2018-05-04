@@ -7,7 +7,7 @@ import org.springframework.util.CollectionUtils;
 import java.util.List;
 
 @SuppressWarnings("ALL")
-public class BaseDao<B, M extends GenericMapper<B>> {
+public abstract class BaseDao<B, M extends GenericMapper<B>> {
     @Autowired
     private M m;
 
